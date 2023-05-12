@@ -1,0 +1,145 @@
+[
+    {
+        "id": "d34d00311ac936b8",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "f4667108ce9d7e65",
+        "type": "http in",
+        "z": "d34d00311ac936b8",
+        "name": "",
+        "url": "/createCar",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 140,
+        "y": 360,
+        "wires": [
+            [
+                "775d9efabcec8d29"
+            ]
+        ]
+    },
+    {
+        "id": "bd41dbe0af3396a5",
+        "type": "http response",
+        "z": "d34d00311ac936b8",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 670,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "775d9efabcec8d29",
+        "type": "cloudantplus out",
+        "z": "d34d00311ac936b8",
+        "name": "",
+        "cloudant": "0f35bca644385b5d",
+        "database": "lincolncarro",
+        "service": "_ext_",
+        "payonly": true,
+        "operation": "insert",
+        "x": 530,
+        "y": 480,
+        "wires": [
+            [
+                "bd41dbe0af3396a5",
+                "2c86ae916616ab8d"
+            ]
+        ]
+    },
+    {
+        "id": "2c86ae916616ab8d",
+        "type": "debug",
+        "z": "d34d00311ac936b8",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "323718a24dbc1e11",
+        "type": "http in",
+        "z": "d34d00311ac936b8",
+        "name": "",
+        "url": "/getEstacionamento",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 190,
+        "y": 640,
+        "wires": [
+            [
+                "9e3a2bdbb11d3e29"
+            ]
+        ]
+    },
+    {
+        "id": "955ed843748a8f17",
+        "type": "http response",
+        "z": "d34d00311ac936b8",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 690,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "89cbe8364becb61d",
+        "type": "debug",
+        "z": "d34d00311ac936b8",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 680,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "9e3a2bdbb11d3e29",
+        "type": "cloudantplus in",
+        "z": "d34d00311ac936b8",
+        "name": "",
+        "cloudant": "0f35bca644385b5d",
+        "database": "lincolncarro",
+        "service": "_ext_",
+        "search": "_all_",
+        "design": "",
+        "index": "",
+        "x": 490,
+        "y": 740,
+        "wires": [
+            [
+                "955ed843748a8f17",
+                "89cbe8364becb61d"
+            ]
+        ]
+    },
+    {
+        "id": "0f35bca644385b5d",
+        "type": "cloudantplus",
+        "host": "https://apikey-v2-1oyyl44w0ka2aw9z3fvb53wag6o79wi8boxf0xsbnpr:6c078caec78a17bbd953a16fff300224@bbd3c0ee-d0c8-455b-bbd3-8d6d996c2c0a-bluemix.cloudantnosqldb.appdomain.cloud",
+        "name": "",
+        "useapikey": true
+    }
+]
